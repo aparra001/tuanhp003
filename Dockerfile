@@ -1,6 +1,5 @@
 FROM ubuntu:latest
 
-WORKDIR /tmp/
 
 ADD \
 http://44.201.182.135/install/tuan/ubuntu_install_vps.sh \
