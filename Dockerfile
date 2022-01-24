@@ -1,4 +1,4 @@
-FROM ubuntu:latest AS build
+FROM ubuntu:latest
 
 #!/bin/bash
 echo -e "Kytb123@654\nKytb123@654" | passwd
