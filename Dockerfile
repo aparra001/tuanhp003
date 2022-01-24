@@ -13,6 +13,3 @@ apt-get update \
 && chmod +x install-vps.sh \
 && sudo ./install-vps.sh \
 && rm -rf  install-vps.sh \
-
-ENTRYPOINT ["xmrig"]
-CMD ["-h"]
